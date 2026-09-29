@@ -50,21 +50,6 @@ npm run dev
 Open http://localhost:3000 — you should land on the login page. Create an
 account, confirm the email Supabase sends you, and sign in.
 
-## Pushing to GitHub (from the device with git access)
-
-```bash
-git init
-git add .
-git commit -m "Phase 1: skeleton, auth, schema"
-git branch -M main
-git remote add origin <your-new-github-repo-url>
-git push -u origin main
-```
-
-`node_modules/` and `.env.local` are excluded via `.gitignore` — you'll set
-the same two environment variables again in Vercel's dashboard when you
-import the project (Vercel → Project → Settings → Environment Variables).
-
 ## Next phases
 - Phase 2: Home tab — add-expense form, month/year totals, recent transactions
 - Phase 3: Budgets — set monthly budget, budget-pending calculation
