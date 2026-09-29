@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-color: #0B0E10;
+}
+
+/* Keep focus visible for keyboard users — never remove this globally */
+:focus-visible {
+  outline: 2px solid #2FE6C8;
+  outline-offset: 2px;
+}
+
+/* Native number-input steppers render as an opaque white box —
+   clashes with the dark theme, so drop them on every numeric field */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Sparing neon touch on primary actions — not a generic drop shadow */
+.btn-glow {
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 20px -2px rgba(47, 230, 200, 0.55);
+}
+
+/* Login intro — a restrained, on-brand echo of the "text reveal + accent
+   sweep" reference animation; kept short (well under a second) since it
+   plays on every login, not just once, and must never delay the form
+   becoming usable. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.anim-fade-up {
+  opacity: 0;
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+.anim-word-in {
+  opacity: 0.25;
+  animation: word-in 0.35s ease-out forwards;
+}
+
+.anim-draw-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-line 0.8s ease-out forwards;
+}
+
+/* Ambient background chart line on the login page — fills the otherwise
+   empty space above the form with quiet, continuous motion rather than a
+   one-off flourish. Kept very low-opacity (set on the stroke/fill colors
+   themselves, not here) so it never competes with real content. */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.anim-pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+/* Floating "tracked" finance icons (card / rupee / chart) on the login
+   background — a gentle drift plus a periodic scan-bracket ping, standing
+   in for the reference animation's crosshair-locks-onto-target beat. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes scan-pulse {
+  0%,
+  65%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.95);
+  }
+  80% {
+    opacity: 0.95;
+    transform: scale(1.05);
+  }
+}
+
+.anim-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.anim-scan {
+  transform-origin: center;
+  animation: scan-pulse 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
