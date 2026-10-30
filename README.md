@@ -57,3 +57,5 @@ account, confirm the email Supabase sends you, and sign in.
 - Phase 5: Total Asset tab
 - Phase 6: Charts tab
 - Phase 7: Polish (PWA, edit/delete, empty states)
+
+### Launch URL: https://expense-tracker-app-beige-five.vercel.app/login
